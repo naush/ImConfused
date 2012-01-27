@@ -4,10 +4,21 @@
     <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
     <script type="text/javascript">
       function getSelect() {
-        var t = document.getSelection();
+        var selection = document.getSelection();
+        
+        var range = selection.getRangeAt(0);
+        var startOffset = range.startOffset;
+        var endOffset = range.endOffset;
+        alert(startOffset);
+        alert(endOffset);
+        var text = selection.anchorNode.data;
+
+        localStorage.setItem("highlight1", text.substring(startOffset, endOffset));
+
         var newnode = document.createElement("span");
-        t.getRangeAt(0).surroundContents(newnode);
-        return t;
+        range.surroundContents(newnode);
+
+        return selection;
       }
 
       function printTextarea() {
