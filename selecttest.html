@@ -1,35 +1,27 @@
 <html>
-<head>
-<link rel="stylesheet" type="text/css" href="confused.css" media="all">
-<script type="text/javascript" src="jquery-1.4.2.min.js">
-</script>
-<script type="text/javascript">
+  <head>
+    <link rel="stylesheet" type="text/css" href="confused.css" media="all">
+    <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+    <script type="text/javascript">
+      function getSelect() {
+        var t = document.getSelection();
+        var newnode = document.createElement("span");
+        t.getRangeAt(0).surroundContents(newnode);
+        return t;
+      }
 
- function getSelect(){
-var t= "This is a test";
-t=document.getSelection();
-var newnode=document.createElement("span");
-t.getRangeAt(0).surroundContents(newnode);
-return t;
-}
-
-function printTextarea()
-{
-var myText=$('#text1').val().toString();
-$('#printout').text(myText);
-}
-
-</script>
-</head>
+      function printTextarea() {
+        var myText = $('#text1').val().toString();
+        $('#printout').text(myText);
+      }
+    </script>
+  </head>
 <body >
 
 <input class="paragraph" onMouseUp="getSelect()" type="button" value="Confused">
 <textarea id="text1" rows="10" cols="80"> hi </textarea>
 <input  onMouseUp="printTextarea()" type="button" value="Write Me">
 <p id="printout"> test</p>
-
-
-
 
 </body>
 </html>
